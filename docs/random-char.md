@@ -73,10 +73,18 @@ void Fill(char[] chars)
 
 <br>
 
-Fills `chars` with random characters chosen from the set defined by `categories`.
+Fills `chars` with random characters chosen from the set defined by `charSet`.
 
 ```cs
 void Fill(char[] chars, CharSet charSet)
+```
+
+<br>
+
+Fills `chars` with random characters chosen from `charSet`.
+
+```cs
+void Fill(char[] chars, char[] charSet)
 ```
 
 <br>
@@ -89,10 +97,18 @@ void Fill(char[] chars, int at, int count)
 
 <br>
 
-Fills `chars` with `count` random characters chosen from the set defined by `categories` starting from `at`.
+Fills `chars` with `count` random characters chosen from the set defined by `charSet` starting from `at`.
 
 ```cs
 void Fill(char[] chars, int at, int count, CharSet charSet)
+```
+
+<br>
+
+Fills `chars` with `count` random characters chosen from `charSet` starting from `at`.
+
+```cs
+void Fill(char[] chars, int at, int count, char[] charSet)
 ```
 
 <br>
@@ -105,10 +121,18 @@ void Fill(Span<char> chars)
 
 <br>
 
-Fills `chars` with random characters chosen from the set defined by `categories`.
+Fills `chars` with random characters chosen from the set defined by `charSet`.
 
 ```cs
 void Fill(Span<char> chars, CharSet charSet)
+```
+
+<br>
+
+Fills `chars` with random characters chosen from `charSet`.
+
+```cs
+void Fill(Span<char> chars, char[] charSet)
 ```
 
 <br>
@@ -121,10 +145,18 @@ void Fill(Span<char> chars, int at, int count)
 
 <br>
 
-Fills `chars` with `count` random characters chosen from the set defined by `categories` starting from `at`.
+Fills `chars` with `count` random characters chosen from the set defined by `charSet` starting from `at`.
 
 ```cs
 void Fill(Span<char> chars, int at, int cout, CharSet charSet)
+```
+
+<br>
+
+Fills `chars` with `count` random characters chosen from `charSet` starting from `at`.
+
+```cs
+void Fill(Span<char> chars, int at, int cout, char[] charSet)
 ```
 ---
 
@@ -138,10 +170,18 @@ void FillUnique(char[] chars)
 
 <br>
 
-Fills `chars` with distinct random characters chosen from the set defined by `categories`.
+Fills `chars` with distinct random characters chosen from the set defined by `charSet`.
 
 ```cs
 void FillUnique(char[] chars, CharSet charSet)
+```
+
+<br>
+
+Fills `chars` with distinct random characters chosen from `charSet`.
+
+```cs
+void FillUnique(char[] chars, char[] charSet)
 ```
 
 <br>
@@ -154,10 +194,18 @@ void FillUnique(char[] chars, int at, int count)
 
 <br>
 
-Fills `chars` with `count` distinct random characters chosen from the set defined by `categories` starting from `at`.
+Fills `chars` with `count` distinct random characters chosen from the set defined by `charSet` starting from `at`.
 
 ```cs
 void FillUnique(char[] chars, int at, int count, CharSet charSet)
+```
+
+<br>
+
+Fills `chars` with `count` distinct random characters chosen from `charSet` starting from `at`.
+
+```cs
+void FillUnique(char[] chars, int at, int count, char[] charSet)
 ```
 
 <br>
@@ -170,10 +218,18 @@ void FillUnique(Span<char> chars)
 
 <br>
 
-Fills `chars` with distinct random characters chosen from the set defined by `categories`.
+Fills `chars` with distinct random characters chosen from the set defined by `charSet`.
 
 ```cs
 void FillUnique(Span<char> chars, CharSet charSet)
+```
+
+<br>
+
+Fills `chars` with distinct random characters chosen from `charSet`.
+
+```cs
+void FillUnique(Span<char> chars, char[] charSet)
 ```
 
 <br>
@@ -186,10 +242,138 @@ void FillUnique(Span<char> chars, int at, int count)
 
 <br>
 
-Fills `chars` with `count` distinct random characters chosen from the set defined by `categories` starting from `at`.
+Fills `chars` with `count` distinct random characters chosen from the set defined by `charSet` starting from `at`.
 
 ```cs
 void FillUnique(Span<char> chars, int at, int cout, CharSet charSet)
+```
+
+<br>
+
+Fills `chars` with `count` distinct random characters chosen from `charSet` starting from `at`.
+
+```cs
+void FillUnique(Span<char> chars, int at, int cout, char[] charSet)
+```
+
+---
+
+### <u>`GenerateCharacters`</u>
+
+Generates `count` random characters. If `count` is negative,
+generation continues infinitely.
+
+```cs
+IEnumerable<char> GenerateCharacters(int count = -1)
+```
+
+<br>
+
+Generates `count` random characters chosen from the set defined by `charSet`.
+If `count` is negative, generation continues infinitely.
+
+```cs
+IEnumerable<char> GenerateCharacters(CharSet charSet, int count = -1)
+```
+
+<br>
+
+Generates `count` random characters chosen from `charSet`.
+If `count` is negative, generation continues infinitely.
+
+```cs
+IEnumerable<char> GenerateCharacters(char[] charSet, int count = -1)
+```
+
+---
+
+### <u>`GenerateUniqueCharacters`</u>
+
+Generates `count` distinct random characters. If `count` is negative, generation 
+continues until all possible characters have been generated.
+
+```cs
+IEnumerable<char> GenerateUniqueCharacters(int count = -1)
+```
+
+<br>
+
+Generates `count` random characters chosen from the set  defined by `charSet`. 
+If `count` is negative, generation continues until all possible characters have 
+been generated.
+
+```cs
+IEnumerable<char> GenerateUniqueCharacters(CharSet charSet, int count = -1)
+```
+
+<br>
+
+Generates `count` random characters chosen from `charSet`. 
+If `count` is negative, generation continues until all possible characters have 
+been generated.
+
+```cs
+IEnumerable<char> GenerateUniqueCharacters(char[] charSet, int count = -1)
+```
+
+---
+
+### <u>`GenerateStrings`</u>
+
+Generates `count` distinct strings with `length` random characters. If `count` 
+is negative, generation continues infinitely.
+
+```cs
+char[] GenerateStrings(int length, int count = -1)
+```
+
+<br>
+
+Generates `count` strings with `length` random characters chosen from the set defined by `charSet`.
+If `count` is negative, generation continues infinitely.
+
+```cs
+char[] GenerateStrings(int length, CharSet charSet, int count = -1)
+```
+
+<br>
+
+Generates `count` strings with `length` random characters chosen from `charSet`.
+If `count` is negative, generation continues infinitely.
+
+```cs
+char[] GenerateStrings(int length, char[] charSet, int count = -1)
+```
+
+---
+
+### <u>`GenerateUniqueStrings`</u>
+
+Generates `count` distinct strings with `length` distinct random characters. 
+If `count` is negative, generation continues until all possible characters have 
+been generated.
+
+```cs
+IEnumerable<char> GenerateUniqueStrings(int length, int count = -1)
+```
+
+<br>
+
+Generates `count` distinct strings with `length` random characters chosen from the set 
+defined by `charSet`. If `count` is negative, generation continues until all possible 
+characters have been generated.
+
+```cs
+IEnumerable<char> GenerateUniqueStrings(int length, CharSet charSet, int count = -1)
+```
+
+<br>
+
+Generates `count` distinct strings with `length` random characters chosen from `charSet`. If `count` is negative, generation continues until all possible 
+characters have been generated.
+
+```cs
+IEnumerable<char> GenerateUniqueStrings(int length, char[] charSet, int count = -1)
 ```
 
 ---
@@ -204,10 +388,18 @@ char GetCharacter()
 
 <br>
 
-Generates a random character chosen from the set defined by `categories`.
+Generates a random character chosen from the set defined by `charSet`.
 
 ```cs
 char GetCharacter(CharSet charSet)
+```
+
+<br>
+
+Generates a random character chosen from `charSet`.
+
+```cs
+char GetCharacter(char[] charSet)
 ```
 
 ---
@@ -222,10 +414,18 @@ char[] GetCharacters(int count)
 
 <br>
 
-Generates `count` random characters chosen from the set defined by `categories`.
+Generates `count` random characters chosen from the set defined by `charSet`.
 
 ```cs
 char[] GetCharacters(int count, CharSet charSet)
+```
+
+<br>
+
+Generates `count` random characters chosen from `charSet`.
+
+```cs
+char[] GetCharacters(int count, char[] charSet)
 ```
 
 ---
@@ -240,10 +440,18 @@ char[] GetUniqueCharacters(int count)
 
 <br>
 
-Generates `count` distinct random characters chosen from the set defined by `categories`.
+Generates `count` distinct random characters chosen from the set defined by `charSet`.
 
 ```cs
 char[] GetUniqueCharacters(int count, CharSet charSet)
+```
+
+<br>
+
+Generates `count` distinct random characters chosen from `charSet`.
+
+```cs
+char[] GetUniqueCharacters(int count, char[] charSet)
 ```
 
 ---
@@ -258,10 +466,18 @@ string GetString(int length)
 
 <br>
 
-Generates a random string with `length` characters chosen from the set defined by `categories`.
+Generates a random string with `length` characters chosen from the set defined by `charSet`.
 
 ```cs
 string GetString(int length, CharSet charSet)
+```
+
+<br>
+
+Generates a random string with `length` characters chosen from `charSet`.
+
+```cs
+string GetString(int length, char[] charSet)
 ```
 
 ---
@@ -276,8 +492,16 @@ string GetUniqueString(int length)
 
 <br>
 
-Generates a random string with `length` distinct characters chosen from the set defined by `categories`.
+Generates a random string with `length` distinct characters chosen from the set defined by `charSet`.
 
 ```cs
 string GetUniqueString(int length, CharSet charSet)
+```
+
+<br>
+
+Generates a random string with `length` distinct characters chosen from `charSet`.
+
+```cs
+string GetUniqueString(int length, char[] charSet)
 ```

@@ -1,10 +1,32 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>RandChar</Title>
+    <Authors>stratagyn</Authors>
+    <Description>Methods for generating random text.</Description>
+    <Copyright>stratagyn 2023</Copyright>
+    <PackageProjectUrl>https://github.com/stratagyn/RandChar</PackageProjectUrl>
+    <PackageIcon>Stratagyn Logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/stratagyn/RandChar</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>random, string, text, character, char</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\OneDrive\Pictures\Stratagyn Logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
