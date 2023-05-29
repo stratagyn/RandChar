@@ -51,7 +51,7 @@ public class GenerateStringsTests
     public void GenerateStringsCharSet_Passes(int length, CharSet charSet, int count)
     {
         var strings = new HashSet<string>(RandChar.GenerateStrings(length, charSet, count));
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         Assert.True(strings.Count == count || strings.Count > (count / 2));
 
@@ -72,7 +72,7 @@ public class GenerateStringsTests
     public void GenerateStringsCharSet_Negative_Passes(int length, CharSet charSet, int count)
     {
         var strings = new HashSet<string>(RandChar.GenerateStrings(length, charSet).Take(count));
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         Assert.True(strings.Count == count || strings.Count > (count / 2));
 
@@ -152,7 +152,7 @@ public class GenerateStringsTests
 
         Assert.Equal(count, chars.Count);
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var str in chars)
             foreach (var c in str)
@@ -174,7 +174,7 @@ public class GenerateStringsTests
 
         Assert.Equal(count, chars.Count);
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var str in chars)
             foreach (var c in str)
@@ -196,7 +196,7 @@ public class GenerateStringsTests
 
         Assert.Equal(count, chars.Count);
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var str in chars)
             foreach (var c in str)

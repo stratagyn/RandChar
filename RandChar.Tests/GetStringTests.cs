@@ -52,7 +52,7 @@ public class GetStringTests
 
         Assert.True(chars.Count == length || chars.Count > (length / 2));
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in @string)
             Assert.Contains(c, uids);
@@ -138,7 +138,7 @@ public class GetStringTests
 
         Assert.Equal(length, chars.Count);
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in @string)
             Assert.Contains(c, uids);

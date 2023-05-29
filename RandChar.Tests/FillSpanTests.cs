@@ -118,7 +118,7 @@ public partial class FillTests
 
         Assert.True(uniqueChars.Count == count || uniqueChars.Count > (count / 2));
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in span)
             Assert.Contains(c, uids);
@@ -149,7 +149,7 @@ public partial class FillTests
 
         Assert.True(uniqueChars.Count == count || uniqueChars.Count > (count / 2));
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in span[count..])
             Assert.Contains(c, uids);
@@ -328,7 +328,7 @@ public partial class FillTests
 
         Assert.Equal(count, uniqueChars.Count);
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in span)
             Assert.Contains(c, uids);
@@ -359,7 +359,7 @@ public partial class FillTests
 
         Assert.Equal(count, uniqueChars.Count);
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in span[count..])
             Assert.Contains(c, uids);

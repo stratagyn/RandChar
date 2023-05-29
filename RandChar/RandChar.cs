@@ -18,15 +18,15 @@ public static class RandChar
 
     public static void Fill(char[] chars, CharSet characterSet)
     {
-        var characters = Characters.GetUIDs(characterSet);
+        var characters = Characters.GetCharacterSet(characterSet);
 
         for (var i = 0; i < chars.Length; i++)
-            chars[i] = (char)characters[RandomNumberGenerator.GetInt32(characters.Count)];
+            chars[i] = characters[RandomNumberGenerator.GetInt32(characters.Count)];
     }
 
-    public static void Fill(char[] chars, char[] characterSet)
+    public static void Fill(char[] chars, IList<char> characterSet)
     {
-        var n = characterSet.Length;
+        var n = characterSet.Count;
 
         for (var i = 0; i < chars.Length; i++)
             chars[i] = characterSet[RandomNumberGenerator.GetInt32(n)];
@@ -52,13 +52,13 @@ public static class RandChar
         if (count > chars.Length - at)
             throw new ArgumentOutOfRangeException(nameof(count), $"Expected {nameof(count)} in range [0, {chars.Length - at}].");
 
-        var characters = Characters.GetUIDs(characterSet);
+        var characters = Characters.GetCharacterSet(characterSet);
 
         for (var i = 0; i < count; i++)
-            chars[at + i] = (char)characters[RandomNumberGenerator.GetInt32(characters.Count)];
+            chars[at + i] = characters[RandomNumberGenerator.GetInt32(characters.Count)];
     }
 
-    public static void Fill(char[] chars, int at, int count, char[] characterSet)
+    public static void Fill(char[] chars, int at, int count, IList<char> characterSet)
     {
         if (at < 0 || at >= chars.Length)
             throw new IndexOutOfRangeException($"Expected {nameof(at)} in range [0, {chars.Length}].");
@@ -66,7 +66,7 @@ public static class RandChar
         if (count > chars.Length - at)
             throw new ArgumentOutOfRangeException(nameof(count), $"Expected {nameof(count)} in range [0, {chars.Length - at}].");
 
-        var n = characterSet.Length;
+        var n = characterSet.Count;
 
         for (var i = 0; i < count; i++)
             chars[at + i] = characterSet[RandomNumberGenerator.GetInt32(n)];
@@ -80,15 +80,15 @@ public static class RandChar
 
     public static void Fill(Span<char> chars, CharSet characterSet)
     {
-        var characters = Characters.GetUIDs(characterSet);
+        var characters = Characters.GetCharacterSet(characterSet);
 
         for (var i = 0; i < chars.Length; i++)
-            chars[i] = (char)characters[RandomNumberGenerator.GetInt32(characters.Count)];
+            chars[i] = characters[RandomNumberGenerator.GetInt32(characters.Count)];
     }
 
-    public static void Fill(Span<char> chars, char[] characterSet)
+    public static void Fill(Span<char> chars, IList<char> characterSet)
     {
-        var n = characterSet.Length;
+        var n = characterSet.Count;
 
         for (var i = 0; i < chars.Length; i++)
             chars[i] = characterSet[RandomNumberGenerator.GetInt32(n)];
@@ -114,13 +114,13 @@ public static class RandChar
         if (count > chars.Length - at)
             throw new ArgumentOutOfRangeException(nameof(count), $"Expected {nameof(count)} in range [0, {chars.Length - at}].");
 
-        var characters = Characters.GetUIDs(characterSet);
+        var characters = Characters.GetCharacterSet(characterSet);
 
         for (var i = 0; i < count; i++)
-            chars[at + i] = (char)characters[RandomNumberGenerator.GetInt32(characters.Count)];
+            chars[at + i] = characters[RandomNumberGenerator.GetInt32(characters.Count)];
     }
 
-    public static void Fill(Span<char> chars, int at, int count, char[] characterSet)
+    public static void Fill(Span<char> chars, int at, int count, IList<char> characterSet)
     {
         if (at < 0 || at >= chars.Length)
             throw new IndexOutOfRangeException($"Expected {nameof(at)} in range [0, {chars.Length}].");
@@ -128,7 +128,7 @@ public static class RandChar
         if (count > chars.Length - at)
             throw new ArgumentOutOfRangeException(nameof(count), $"Expected {nameof(count)} in range [0, {chars.Length - at}].");
 
-        var n = characterSet.Length;
+        var n = characterSet.Count;
 
         for (var i = 0; i < count; i++)
             chars[at + i] = characterSet[RandomNumberGenerator.GetInt32(n)];
@@ -156,18 +156,18 @@ public static class RandChar
 
     public static void FillUnique(char[] chars, CharSet characterSet)
     {
-        var characters = Characters.GetUIDs(characterSet);
+        var characters = Characters.GetCharacterSet(characterSet);
         var charset = new HashSet<char>();
 
         for (var i = 0; i < chars.Length; i++)
         {
             var index = RandomNumberGenerator.GetInt32(characters.Count);
-            var nextChar = (char)characters[index];
+            var nextChar = characters[index];
 
             while (charset.Contains(nextChar))
             {
                 index = RandomNumberGenerator.GetInt32(characters.Count);
-                nextChar = (char)characters[index];
+                nextChar = characters[index];
             }
 
             chars[i] = nextChar;
@@ -175,9 +175,9 @@ public static class RandChar
         }
     }
 
-    public static void FillUnique(char[] chars, char[] characterSet)
+    public static void FillUnique(char[] chars, IList<char> characterSet)
     {
-        var n = characterSet.Length;
+        var n = characterSet.Count;
         var uniqueChars = new HashSet<char>();
 
         for (var i = 0; i < chars.Length; i++)
@@ -222,23 +222,23 @@ public static class RandChar
         if (count > chars.Length - at)
             throw new ArgumentOutOfRangeException(nameof(count), $"Expected {nameof(count)} in range [0, {chars.Length - at}].");
 
-        var characters = Characters.GetUIDs(characterSet);
+        var characters = Characters.GetCharacterSet(characterSet);
         var n = characters.Count;
         var uniqueChars = new HashSet<char>();
 
         for (var i = 0; i < count; i++)
         {
-            var nextChar = (char)characters[RandomNumberGenerator.GetInt32(n)];
+            var nextChar = characters[RandomNumberGenerator.GetInt32(n)];
 
             while (uniqueChars.Contains(nextChar))
-                nextChar = (char)characters[RandomNumberGenerator.GetInt32(n)];
+                nextChar = characters[RandomNumberGenerator.GetInt32(n)];
 
             chars[at + i] = nextChar;
             uniqueChars.Add(nextChar);
         }
     }
 
-    public static void FillUnique(char[] chars, int at, int count, char[] characterSet)
+    public static void FillUnique(char[] chars, int at, int count, IList<char> characterSet)
     {
         if (at < 0 || at >= chars.Length)
             throw new IndexOutOfRangeException($"Expected {nameof(at)} in range [0, {chars.Length}].");
@@ -246,7 +246,7 @@ public static class RandChar
         if (count > chars.Length - at)
             throw new ArgumentOutOfRangeException(nameof(count), $"Expected {nameof(count)} in range [0, {chars.Length - at}].");
 
-        var n = characterSet.Length;
+        var n = characterSet.Count;
         var uniqueChars = new HashSet<char>();
 
         for (var i = 0; i < count; i++)
@@ -279,18 +279,18 @@ public static class RandChar
 
     public static void FillUnique(Span<char> chars, CharSet characterSet)
     {
-        var characters = Characters.GetUIDs(characterSet);
+        var characters = Characters.GetCharacterSet(characterSet);
         var charset = new HashSet<char>();
 
         for (var i = 0; i < chars.Length; i++)
         {
             var index = RandomNumberGenerator.GetInt32(characters.Count);
-            var nextChar = (char)characters[index];
+            var nextChar = characters[index];
 
             while (charset.Contains(nextChar))
             {
                 index = RandomNumberGenerator.GetInt32(characters.Count);
-                nextChar = (char)characters[index];
+                nextChar = characters[index];
             }
 
             chars[i] = nextChar;
@@ -298,9 +298,9 @@ public static class RandChar
         }
     }
 
-    public static void FillUnique(Span<char> chars, char[] characterSet)
+    public static void FillUnique(Span<char> chars, IList<char> characterSet)
     {
-        var n = characterSet.Length;
+        var n = characterSet.Count;
         var uniqueChars = new HashSet<char>();
 
         for (var i = 0; i < chars.Length; i++)
@@ -345,18 +345,18 @@ public static class RandChar
         if (count > chars.Length - at)
             throw new ArgumentOutOfRangeException(nameof(count), $"Expected {nameof(count)} in range [0, {chars.Length - at}].");
 
-        var characters = Characters.GetUIDs(characterSet);
+        var characters = Characters.GetCharacterSet(characterSet);
         var charset = new HashSet<char>();
 
         for (var i = 0; i < count; i++)
         {
             var index = RandomNumberGenerator.GetInt32(characters.Count);
-            var nextChar = (char)characters[index];
+            var nextChar = characters[index];
 
             while (charset.Contains(nextChar))
             {
                 index = RandomNumberGenerator.GetInt32(characters.Count);
-                nextChar = (char)characters[index];
+                nextChar = characters[index];
             }
 
             chars[at + i] = nextChar;
@@ -364,7 +364,7 @@ public static class RandChar
         }
     }
 
-    public static void FillUnique(Span<char> chars, int at, int count, char[] characterSet)
+    public static void FillUnique(Span<char> chars, int at, int count, IList<char> characterSet)
     {
         if (at < 0 || at >= chars.Length)
             throw new IndexOutOfRangeException($"Expected {nameof(at)} in range [0, {chars.Length}].");
@@ -372,7 +372,7 @@ public static class RandChar
         if (count > chars.Length - at)
             throw new ArgumentOutOfRangeException(nameof(count), $"Expected {nameof(count)} in range [0, {chars.Length - at}].");
 
-        var n = characterSet.Length;
+        var n = characterSet.Count;
         var uniqueChars = new HashSet<char>();
 
         for (var i = 0; i < count; i++)
@@ -399,19 +399,19 @@ public static class RandChar
 
     public static IEnumerable<char> GenerateCharacters(CharSet characterSet, int count = -1)
     {
-        var uids = Characters.GetUIDs(characterSet);
+        var uids = Characters.GetCharacterSet(characterSet);
 
         for (var i = 0; i != count; ++i)
         {
             var index = RandomNumberGenerator.GetInt32(uids.Count);
 
-            yield return (char)uids[index];
+            yield return uids[index];
         }
     }
 
-    public static IEnumerable<char> GenerateCharacters(char[] characterSet, int count = -1)
+    public static IEnumerable<char> GenerateCharacters(IList<char> characterSet, int count = -1)
     {
-        var n = characterSet.Length;
+        var n = characterSet.Count;
 
         for (var i = 0; i != count; ++i)
             yield return characterSet[RandomNumberGenerator.GetInt32(n)];
@@ -439,17 +439,17 @@ public static class RandChar
 
     public static IEnumerable<char> GenerateUniqueCharacters(CharSet characterSet, int count = -1)
     {
-        var uids = Characters.GetUIDs(characterSet);
+        var uids = Characters.GetCharacterSet(characterSet);
         var charset = new HashSet<char>();
         var index = RandomNumberGenerator.GetInt32(uids.Count);
-        var nextChar = (char)uids[index];
+        var nextChar = uids[index];
 
         for (var i = 0; i != count; i++)
         {
             while (charset.Contains(nextChar))
             {
                 index = RandomNumberGenerator.GetInt32(uids.Count);
-                nextChar = (char)uids[index];
+                nextChar = uids[index];
             }
 
             yield return nextChar;
@@ -458,9 +458,9 @@ public static class RandChar
         }
     }
 
-    public static IEnumerable<char> GenerateUniqueCharacters(char[] characterSet, int count = -1)
+    public static IEnumerable<char> GenerateUniqueCharacters(IList<char> characterSet, int count = -1)
     {
-        var n = characterSet.Length;
+        var n = characterSet.Count;
         var uniqueChars = new HashSet<char>();
         var nextChar = characterSet[RandomNumberGenerator.GetInt32(n)];
 
@@ -487,7 +487,7 @@ public static class RandChar
 
     public static IEnumerable<string> GenerateStrings(int length, CharSet characterSet, int count = -1)
     {
-        var characters = Characters.GetUIDs(characterSet);
+        var characters = Characters.GetCharacterSet(characterSet);
         var str = new StringBuilder();
 
         for (var i = 0; i != count; ++i)
@@ -495,7 +495,7 @@ public static class RandChar
             for (var c = 0; c < length; ++c)
             {
                 var index = RandomNumberGenerator.GetInt32(characters.Count);
-                str.Append((char)characters[index]);
+                str.Append(characters[index]);
             }
 
             yield return str.ToString();
@@ -504,9 +504,9 @@ public static class RandChar
         }
     }
 
-    public static IEnumerable<string> GenerateStrings(int length, char[] characterSet, int count = -1)
+    public static IEnumerable<string> GenerateStrings(int length, IList<char> characterSet, int count = -1)
     {
-        var n = characterSet.Length;
+        var n = characterSet.Count;
         var str = new StringBuilder();
 
         for (var i = 0; i != count; ++i)
@@ -545,7 +545,7 @@ public static class RandChar
     {
         var strset = new HashSet<string>();
         var chars = new StringBuilder(length);
-        var uids = Characters.GetUIDs(characterSet);
+        var uids = Characters.GetCharacterSet(characterSet);
 
         for (var i = 0; i != count; i++)
         {
@@ -565,7 +565,7 @@ public static class RandChar
         }
     }
 
-    public static IEnumerable<string> GenerateUniqueStrings(int length, char[] characterSet, int count = -1)
+    public static IEnumerable<string> GenerateUniqueStrings(int length, IList<char> characterSet, int count = -1)
     {
         var strset = new HashSet<string>();
         var chars = new StringBuilder(length);
@@ -599,19 +599,19 @@ public static class RandChar
         if (index > 0xD7FF)
             index += SurrogateSpaceSize;
 
-        return (char)(index);
+        return (char)index;
     }
 
     public static char GetCharacter(CharSet characterSet)
     {
-        var characters = Characters.GetUIDs(characterSet);
+        var characters = Characters.GetCharacterSet(characterSet);
         var index = RandomNumberGenerator.GetInt32(characters.Count);
 
-        return (char)(characters[index]);
+        return (characters[index]);
     }
 
-    public static char GetCharacter(char[] characterSet) =>
-        characterSet[RandomNumberGenerator.GetInt32(characterSet.Length)];
+    public static char GetCharacter(IList<char> characterSet) =>
+        characterSet[RandomNumberGenerator.GetInt32(characterSet.Count)];
 
     #endregion GetCharacter
 
@@ -635,24 +635,24 @@ public static class RandChar
         if (count < 0)
             throw new ArgumentOutOfRangeException(nameof(count), $"Expected non-negative {nameof(count)}.");
 
-        var uids = Characters.GetUIDs(characterSet);
+        var uids = Characters.GetCharacterSet(characterSet);
         var chars = new char[count];
 
         for (var i = 0; i < count; ++i)
         {
             var index = RandomNumberGenerator.GetInt32(uids.Count);
-            chars[i] = (char)uids[index];
+            chars[i] = uids[index];
         }
 
         return chars;
     }
 
-    public static char[] GetCharacters(int count, char[] characterSet)
+    public static char[] GetCharacters(int count, IList<char> characterSet)
     {
         if (count < 0)
             throw new ArgumentOutOfRangeException(nameof(count), $"Expected non-negative {nameof(count)}.");
 
-        var n = characterSet.Length;
+        var n = characterSet.Count;
         var chars = new char[count];
 
         for (var i = 0; i < count; ++i)
@@ -697,10 +697,10 @@ public static class RandChar
         if (count == 0)
             return Array.Empty<char>();
 
-        var uids = Characters.GetUIDs(characterSet);
+        var uids = Characters.GetCharacterSet(characterSet);
         var uniqueChars = new HashSet<char>();
         var index = RandomNumberGenerator.GetInt32(uids.Count);
-        var nextChar = (char)uids[index];
+        var nextChar = uids[index];
         var chars = new char[count];
 
         for (var i = 0; i < count; i++)
@@ -708,7 +708,7 @@ public static class RandChar
             while (uniqueChars.Contains(nextChar))
             {
                 index = RandomNumberGenerator.GetInt32(uids.Count);
-                nextChar = (char)uids[index];
+                nextChar = uids[index];
             }
 
             chars[i] = nextChar;
@@ -718,7 +718,7 @@ public static class RandChar
         return chars;
     }
 
-    public static char[] GetUniqueCharacters(int count, char[] characterSet)
+    public static char[] GetUniqueCharacters(int count, IList<char> characterSet)
     {
         if (count < 0)
             throw new ArgumentOutOfRangeException(nameof(count), $"Expected non-negative {nameof(count)}.");
@@ -726,7 +726,7 @@ public static class RandChar
         if (count == 0)
             return Array.Empty<char>();
 
-        var n = characterSet.Length;
+        var n = characterSet.Count;
         var uniqueChars = new HashSet<char>();
         var nextChar = characterSet[RandomNumberGenerator.GetInt32(n)];
         var chars = new char[count];
@@ -771,19 +771,19 @@ public static class RandChar
         if (length == 0)
             return "";
 
-        var characters = Characters.GetUIDs(characterSet);
+        var characters = Characters.GetCharacterSet(characterSet);
         var str = new StringBuilder();
 
         for (var i = 0; i < length; ++i)
         {
             var index = RandomNumberGenerator.GetInt32(characters.Count);
-            str.Append((char)characters[index]);
+            str.Append(characters[index]);
         }
 
         return str.ToString();
     }
 
-    public static string GetString(int length, char[] characterSet)
+    public static string GetString(int length, IList<char> characterSet)
     {
         if (length < 0)
             throw new ArgumentOutOfRangeException(nameof(length), $"Expected non-negative {nameof(length)}.");
@@ -791,7 +791,7 @@ public static class RandChar
         if (length == 0)
             return "";
 
-        var n = characterSet.Length;
+        var n = characterSet.Count;
         var str = new StringBuilder();
 
         for (var i = 0; i < length; ++i)
@@ -836,10 +836,10 @@ public static class RandChar
         if (length == 0)
             return "";
 
-        var characters = Characters.GetUIDs(characterSet);
+        var characters = Characters.GetCharacterSet(characterSet);
         var uniqueChars = new HashSet<char>();
         var index = RandomNumberGenerator.GetInt32(characters.Count);
-        var nextChar = (char)characters[index];
+        var nextChar = characters[index];
         var str = new StringBuilder();
 
         for (var i = 0; i < length; i++)
@@ -847,7 +847,7 @@ public static class RandChar
             while (uniqueChars.Contains(nextChar))
             {
                 index = RandomNumberGenerator.GetInt32(characters.Count);
-                nextChar = (char)characters[index];
+                nextChar = characters[index];
             }
 
             str.Append(nextChar);
@@ -857,7 +857,7 @@ public static class RandChar
         return str.ToString();
     }
 
-    public static string GetUniqueString(int length, char[] characterSet)
+    public static string GetUniqueString(int length, IList<char> characterSet)
     {
         if (length < 0)
             throw new ArgumentOutOfRangeException(nameof(length), $"Expected non-negative {nameof(length)}.");
@@ -865,7 +865,7 @@ public static class RandChar
         if (length == 0)
             return "";
 
-        var n = characterSet.Length;
+        var n = characterSet.Count;
         var uniqueChars = new HashSet<char>();
         var nextChar = characterSet[RandomNumberGenerator.GetInt32(n)];
         var str = new StringBuilder();
@@ -884,38 +884,16 @@ public static class RandChar
 
     #endregion GetUniqueString
 
-    private static string GetUniqueString(int length, StringBuilder chars, IList<int> uids)
+    private static string GetUniqueString(int length, StringBuilder chars, IList<char> characterSet)
     {
         var charset = new HashSet<char>();
 
         for (var c = 0; c < length; c++)
         {
-            var index = RandomNumberGenerator.GetInt32(uids.Count);
-            var nextChar = (char)uids[index];
+            var nextChar = characterSet[RandomNumberGenerator.GetInt32(characterSet.Count)];
 
             while (charset.Contains(nextChar))
-            {
-                index = RandomNumberGenerator.GetInt32(uids.Count);
-                nextChar = (char)uids[index];
-            }
-
-            chars.Append(nextChar);
-            charset.Add(nextChar);
-        }
-
-        return chars.ToString();
-    }
-
-    private static string GetUniqueString(int length, StringBuilder chars, char[] characterSet)
-    {
-        var charset = new HashSet<char>();
-
-        for (var c = 0; c < length; c++)
-        {
-            var nextChar = characterSet[RandomNumberGenerator.GetInt32(characterSet.Length)];
-
-            while (charset.Contains(nextChar))
-                nextChar = characterSet[RandomNumberGenerator.GetInt32(characterSet.Length)];
+                nextChar = characterSet[RandomNumberGenerator.GetInt32(characterSet.Count)];
 
             chars.Append(nextChar);
             charset.Add(nextChar);

@@ -81,7 +81,7 @@ public class GenerateCharactersTests
     public void GenerateCharactersCharSet_Passes(CharSet charSet, int count)
     {
         var chars = new HashSet<char>(RandChar.GenerateCharacters(charSet, count));
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in chars)
             Assert.Contains(c, uids);
@@ -101,7 +101,7 @@ public class GenerateCharactersTests
     public void GenerateCharactersCharSet_Negative_Passes(CharSet charSet, int count)
     {
         var chars = new HashSet<char>(RandChar.GenerateCharacters(charSet).Take(count));
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in chars)
             Assert.Contains(c, uids);
@@ -148,7 +148,7 @@ public class GenerateCharactersTests
 
         Assert.Equal(count, chars.Count);
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in chars)
             Assert.Contains(c, uids);
@@ -169,7 +169,7 @@ public class GenerateCharactersTests
 
         Assert.Equal(count, chars.Count);
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in chars)
             Assert.Contains(c, uids);

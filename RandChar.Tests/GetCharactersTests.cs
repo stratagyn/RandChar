@@ -24,7 +24,7 @@ public class GetCharactersTests
     public void GetCharacterCharSet_Passes(CharSet charSet)
     {
         var c = RandChar.GetCharacter(charSet);
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         Assert.Contains(c, uids);
     }
@@ -74,7 +74,7 @@ public class GetCharactersTests
 
         Assert.True(chars.Count == count || chars.Count > (count / 2));
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in chars)
             Assert.Contains(c, uids);
@@ -157,7 +157,7 @@ public class GetCharactersTests
 
         Assert.Equal(count, chars.Count);
 
-        var uids = new HashSet<int>(Characters.GetUIDs(charSet));
+        var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in chars)
             Assert.Contains(c, uids);

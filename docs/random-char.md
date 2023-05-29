@@ -84,7 +84,7 @@ void Fill(char[] chars, CharSet charSet)
 Fills `chars` with random characters chosen from `charSet`.
 
 ```cs
-void Fill(char[] chars, char[] charSet)
+void Fill(char[] chars, IList<char> charSet)
 ```
 
 <br>
@@ -108,7 +108,7 @@ void Fill(char[] chars, int at, int count, CharSet charSet)
 Fills `chars` with `count` random characters chosen from `charSet` starting from `at`.
 
 ```cs
-void Fill(char[] chars, int at, int count, char[] charSet)
+void Fill(char[] chars, int at, int count, IList<char> charSet)
 ```
 
 <br>
@@ -132,7 +132,7 @@ void Fill(Span<char> chars, CharSet charSet)
 Fills `chars` with random characters chosen from `charSet`.
 
 ```cs
-void Fill(Span<char> chars, char[] charSet)
+void Fill(Span<char> chars, IList<char> charSet)
 ```
 
 <br>
@@ -156,7 +156,7 @@ void Fill(Span<char> chars, int at, int cout, CharSet charSet)
 Fills `chars` with `count` random characters chosen from `charSet` starting from `at`.
 
 ```cs
-void Fill(Span<char> chars, int at, int cout, char[] charSet)
+void Fill(Span<char> chars, int at, int cout, IList<char> charSet)
 ```
 ---
 
@@ -181,7 +181,7 @@ void FillUnique(char[] chars, CharSet charSet)
 Fills `chars` with distinct random characters chosen from `charSet`.
 
 ```cs
-void FillUnique(char[] chars, char[] charSet)
+void FillUnique(char[] chars, IList<char> charSet)
 ```
 
 <br>
@@ -205,7 +205,7 @@ void FillUnique(char[] chars, int at, int count, CharSet charSet)
 Fills `chars` with `count` distinct random characters chosen from `charSet` starting from `at`.
 
 ```cs
-void FillUnique(char[] chars, int at, int count, char[] charSet)
+void FillUnique(char[] chars, int at, int count, IList<char> charSet)
 ```
 
 <br>
@@ -229,7 +229,7 @@ void FillUnique(Span<char> chars, CharSet charSet)
 Fills `chars` with distinct random characters chosen from `charSet`.
 
 ```cs
-void FillUnique(Span<char> chars, char[] charSet)
+void FillUnique(Span<char> chars, IList<char> charSet)
 ```
 
 <br>
@@ -253,7 +253,7 @@ void FillUnique(Span<char> chars, int at, int cout, CharSet charSet)
 Fills `chars` with `count` distinct random characters chosen from `charSet` starting from `at`.
 
 ```cs
-void FillUnique(Span<char> chars, int at, int cout, char[] charSet)
+void FillUnique(Span<char> chars, int at, int cout, IList<char> charSet)
 ```
 
 ---
@@ -282,7 +282,7 @@ Generates `count` random characters chosen from `charSet`.
 If `count` is negative, generation continues infinitely.
 
 ```cs
-IEnumerable<char> GenerateCharacters(char[] charSet, int count = -1)
+IEnumerable<char> GenerateCharacters(IList<char> charSet, int count = -1)
 ```
 
 ---
@@ -313,7 +313,7 @@ If `count` is negative, generation continues until all possible characters have
 been generated.
 
 ```cs
-IEnumerable<char> GenerateUniqueCharacters(char[] charSet, int count = -1)
+IEnumerable<char> GenerateUniqueCharacters(IList<char> charSet, int count = -1)
 ```
 
 ---
@@ -342,7 +342,7 @@ Generates `count` strings with `length` random characters chosen from `charSet`.
 If `count` is negative, generation continues infinitely.
 
 ```cs
-char[] GenerateStrings(int length, char[] charSet, int count = -1)
+char[] GenerateStrings(int length, IList<char> charSet, int count = -1)
 ```
 
 ---
@@ -373,7 +373,7 @@ Generates `count` distinct strings with `length` random characters chosen from `
 characters have been generated.
 
 ```cs
-IEnumerable<char> GenerateUniqueStrings(int length, char[] charSet, int count = -1)
+IEnumerable<char> GenerateUniqueStrings(int length, IList<char> charSet, int count = -1)
 ```
 
 ---
@@ -399,7 +399,7 @@ char GetCharacter(CharSet charSet)
 Generates a random character chosen from `charSet`.
 
 ```cs
-char GetCharacter(char[] charSet)
+char GetCharacter(IList<char> charSet)
 ```
 
 ---
@@ -425,7 +425,7 @@ char[] GetCharacters(int count, CharSet charSet)
 Generates `count` random characters chosen from `charSet`.
 
 ```cs
-char[] GetCharacters(int count, char[] charSet)
+char[] GetCharacters(int count, IList<char> charSet)
 ```
 
 ---
@@ -451,7 +451,7 @@ char[] GetUniqueCharacters(int count, CharSet charSet)
 Generates `count` distinct random characters chosen from `charSet`.
 
 ```cs
-char[] GetUniqueCharacters(int count, char[] charSet)
+char[] GetUniqueCharacters(int count, IList<char> charSet)
 ```
 
 ---
@@ -477,7 +477,7 @@ string GetString(int length, CharSet charSet)
 Generates a random string with `length` characters chosen from `charSet`.
 
 ```cs
-string GetString(int length, char[] charSet)
+string GetString(int length, IList<char> charSet)
 ```
 
 ---
@@ -503,5 +503,5 @@ string GetUniqueString(int length, CharSet charSet)
 Generates a random string with `length` distinct characters chosen from `charSet`.
 
 ```cs
-string GetUniqueString(int length, char[] charSet)
+string GetUniqueString(int length, IList<char> charSet)
 ```
