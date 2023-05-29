@@ -4,12 +4,14 @@ A collection of methods for generating random characters and strings.
 
 # Content
 
-* [Character Categories](#character-categories)
-  * [ASCII Categories](#ascii-categories)
-  * [Supported Unicode Categories](#unicode-categories)
+* [Character Sets](#character-sets)
 * [Methods](#methods)
   * [`Fill`](#ufillu)
   * [`FillUnique`](#ufilluniqueu)
+  * [`GenerateCharacters`](#ugeneratecharactersu)
+  * [`GenerateUniqueCharacters`](#ugenerateuniquecharactersu)
+  * [`GenerateStrings`](#ugeneratestringsu)
+  * [`GenerateUniqueStrings`](#ugenerateuniquestringsu)
   * [`GetCharacter`](#ugetcharacteru)
   * [`GetCharacters`](#ugetcharactersu)
   * [`GetUniqueCharacters`](#ugetuniquecharactersu)
@@ -17,7 +19,7 @@ A collection of methods for generating random characters and strings.
   * [`GetUniqueString`](#ugetuniquestringu)
 
 
-## Character Categories
+## Character Sets
 
 Characters generated have a unicode value in the range **[0x0000, 0xD7FF]** or **[0xE000, 0x10FFFF]**. Generation can be restricted to subsets defined by the `CharSet` enum. `CharSet` constants can be combined to create mixed subsets.
 
