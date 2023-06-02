@@ -20,10 +20,10 @@ var passwordCharacters =
     | CharSet.ASCIIPunctuation;
 
 //Generates a password with 10 distinct password characters
-var password = RandChar.GetUniqueString(10, passwordCharacters);
+var password = RandomCharGenerator.GetUniqueString(10, passwordCharacters);
 
 //Generates 10 distinct passwords with 10 distinct password characters
-var passwords = RandChar.GenerateUniqueStrings(10, passwordCharacters, 10)
+var passwords = RandomCharGenerator.GenerateUniqueStrings(10, passwordCharacters, 10)
 ```
 
 
