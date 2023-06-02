@@ -3,7 +3,7 @@ using System.Text;
 
 namespace RandChar;
 
-public static class RandChar
+public static class RandomCharGenerator
 {
     private const int AdjustedCharacterMax = 0x10F800;
     private const int SurrogateSpaceSize = 0x0800;
@@ -485,13 +485,44 @@ public static class RandChar
             yield return GetString(length);
     }
 
+    public static IEnumerable<string> GenerateStrings(int minLength, int maxLength, int count = -1)
+    {
+        CheckRange(minLength, maxLength);
+
+        for (var i = 0; i != count; ++i)
+            yield return GetString(RandomNumberGenerator.GetInt32(minLength, maxLength + 1));
+    }
+
     public static IEnumerable<string> GenerateStrings(int length, CharSet characterSet, int count = -1)
     {
         var characters = Characters.GetCharacterSet(characterSet);
-        var str = new StringBuilder();
+        var str = new StringBuilder(length);
 
         for (var i = 0; i != count; ++i)
         {
+            for (var c = 0; c < length; ++c)
+            {
+                var index = RandomNumberGenerator.GetInt32(characters.Count);
+                str.Append(characters[index]);
+            }
+
+            yield return str.ToString();
+
+            str.Clear();
+        }
+    }
+
+    public static IEnumerable<string> GenerateStrings(int minLength, int maxLength, CharSet characterSet, int count = -1)
+    {
+        CheckRange(minLength, maxLength);
+
+        var characters = Characters.GetCharacterSet(characterSet);
+        var str = new StringBuilder(minLength);
+
+        for (var i = 0; i != count; ++i)
+        {
+            var length = RandomNumberGenerator.GetInt32(minLength, maxLength + 1);
+
             for (var c = 0; c < length; ++c)
             {
                 var index = RandomNumberGenerator.GetInt32(characters.Count);
@@ -520,46 +551,70 @@ public static class RandChar
         }
     }
 
+    public static IEnumerable<string> GenerateStrings(int minLength, int maxLength, IList<char> characterSet, int count = -1)
+    {
+        CheckRange(minLength, maxLength);
+
+        var n = characterSet.Count;
+        var str = new StringBuilder(minLength);
+
+        for (var i = 0; i != count; ++i)
+        {
+            var length = RandomNumberGenerator.GetInt32(minLength, maxLength + 1);
+
+            for (var c = 0; c < length; ++c)
+                str.Append(characterSet[RandomNumberGenerator.GetInt32(n)]);
+
+            yield return str.ToString();
+
+            str.Clear();
+        }
+    }
+
     #endregion GenerateStrings
 
     #region GenerateUniqueStrings
 
     public static IEnumerable<string> GenerateUniqueStrings(int length, int count = -1)
     {
-        var strset = new HashSet<string>();
+        for (var i = 0; i != count; i++)
+            yield return GetUniqueString(length);
+    }
+
+    public static IEnumerable<string> GenerateUniqueStrings(int minLength, int maxLength, int count = -1)
+    {
+        CheckRange(minLength, maxLength);
 
         for (var i = 0; i != count; i++)
         {
-            var nextStr = GetUniqueString(length);
-
-            while (strset.Contains(nextStr))
-                nextStr = GetUniqueString(length);
-
-            yield return nextStr;
-
-            strset.Add(nextStr);
+            var length = RandomNumberGenerator.GetInt32(minLength, maxLength + 1);
+            
+            yield return GetUniqueString(length);
         }
     }
 
     public static IEnumerable<string> GenerateUniqueStrings(int length, CharSet characterSet, int count = -1)
     {
-        var strset = new HashSet<string>();
         var chars = new StringBuilder(length);
         var uids = Characters.GetCharacterSet(characterSet);
 
         for (var i = 0; i != count; i++)
+        { 
+            yield return GetUniqueString(length, chars, uids);
+            chars.Clear();
+        }
+    }
+
+    public static IEnumerable<string> GenerateUniqueStrings(int minLength, int maxLength, CharSet characterSet, int count = -1)
+    {
+        var chars = new StringBuilder(minLength);
+        var uids = Characters.GetCharacterSet(characterSet);
+
+        for (var i = 0; i != count; i++)
         {
-            var nextStr = GetUniqueString(length, chars, uids);
-
-            while (strset.Contains(nextStr))
-            {
-                chars.Clear();
-                nextStr = GetUniqueString(length, chars, uids);
-            }
-
-            yield return nextStr;
-
-            strset.Add(nextStr);
+            var length = RandomNumberGenerator.GetInt32(minLength, maxLength + 1);
+            
+            yield return GetUniqueString(length, chars, uids);
 
             chars.Clear();
         }
@@ -567,27 +622,29 @@ public static class RandChar
 
     public static IEnumerable<string> GenerateUniqueStrings(int length, IList<char> characterSet, int count = -1)
     {
-        var strset = new HashSet<string>();
         var chars = new StringBuilder(length);
 
         for (var i = 0; i != count; i++)
         {
-            var nextStr = GetUniqueString(length, chars, characterSet);
-
-            while (strset.Contains(nextStr))
-            {
-                chars.Clear();
-                nextStr = GetUniqueString(length, chars, characterSet);
-            }
-
-            yield return nextStr;
-
-            strset.Add(nextStr);
+            yield return GetUniqueString(length, chars, characterSet);
 
             chars.Clear();
         }
     }
 
+    public static IEnumerable<string> GenerateUniqueStrings(int minLength, int maxLength, IList<char> characterSet, int count = -1)
+    {
+        var chars = new StringBuilder(minLength);
+
+        for (var i = 0; i != count; i++)
+        {
+            var length = RandomNumberGenerator.GetInt32(minLength, maxLength + 1);
+            
+            yield return GetUniqueString(length, chars, characterSet);
+
+            chars.Clear();
+        }
+    }
     #endregion GenerateUniqueStrings
 
     #region GetCharacter
@@ -625,6 +682,18 @@ public static class RandChar
         var chars = new char[count];
 
         for (var i = 0; i < count; ++i)
+            chars[i] = GetCharacter();
+
+        return chars;
+    }
+
+    public static char[] GetCharacters(int minLength, int maxLength)
+    {
+        CheckRange(minLength, maxLength);
+
+        var chars = new char[RandomNumberGenerator.GetInt32(minLength, maxLength + 1)];
+
+        for (var i = 0; i < chars.Length; ++i)
             chars[i] = GetCharacter();
 
         return chars;
@@ -883,6 +952,18 @@ public static class RandChar
     }
 
     #endregion GetUniqueString
+
+    private static void CheckRange(int minLength, int maxLength)
+    {
+        if (minLength < 0)
+            throw new ArgumentOutOfRangeException(nameof(minLength), $"Expected non-negative {nameof(minLength)}.");
+
+        if (maxLength < 0)
+            throw new ArgumentOutOfRangeException(nameof(maxLength), $"Expected non-negative {nameof(maxLength)}.");
+
+        if (minLength > maxLength)
+            throw new ArgumentException($"Expected {nameof(minLength)} in range [{0}, {maxLength}].");
+    }
 
     private static string GetUniqueString(int length, StringBuilder chars, IList<char> characterSet)
     {

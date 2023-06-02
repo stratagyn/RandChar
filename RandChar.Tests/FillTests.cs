@@ -12,7 +12,7 @@ public partial class FillTests
     {
         var chars = new char[count];
 
-        RandChar.Fill(chars);
+        RandomCharGenerator.Fill(chars);
 
         var uniqueChars = new HashSet<char>(chars);
 
@@ -28,7 +28,7 @@ public partial class FillTests
     {
         var chars = new char[count * 2];
 
-        RandChar.Fill(chars, count, count);
+        RandomCharGenerator.Fill(chars, count, count);
 
         var uniqueChars = new HashSet<char>(chars[count..]);
 
@@ -50,7 +50,7 @@ public partial class FillTests
         {
             var chars = new char[count];
 
-            RandChar.Fill(chars, -1, count);
+            RandomCharGenerator.Fill(chars, -1, count);
         });
     }
 
@@ -66,7 +66,7 @@ public partial class FillTests
         {
             var chars = new char[count];
 
-            RandChar.Fill(chars, count, count);
+            RandomCharGenerator.Fill(chars, count, count);
         });
     }
 
@@ -81,7 +81,7 @@ public partial class FillTests
         {
             var chars = new char[count];
 
-            RandChar.Fill(chars, 1, count);
+            RandomCharGenerator.Fill(chars, 1, count);
         });
     }
 
@@ -98,7 +98,7 @@ public partial class FillTests
     {
         var chars = new char[count];
 
-        RandChar.Fill(chars, charSet);
+        RandomCharGenerator.Fill(chars, charSet);
 
         var uniqueChars = new HashSet<char>(chars);
 
@@ -122,7 +122,7 @@ public partial class FillTests
     {
         var chars = new char[count * 2];
 
-        RandChar.Fill(chars, count, count, charSet);
+        RandomCharGenerator.Fill(chars, count, count, charSet);
 
         for (var i = 0; i < count; i++)
             Assert.Equal('\0', chars[i]);
@@ -152,7 +152,7 @@ public partial class FillTests
         {
             var chars = new char[count];
 
-            RandChar.Fill(chars, -1, count, charSet);
+            RandomCharGenerator.Fill(chars, -1, count, charSet);
         });
     }
 
@@ -171,7 +171,7 @@ public partial class FillTests
         {
             var chars = new char[count];
 
-            RandChar.Fill(chars, count, count, charSet);
+            RandomCharGenerator.Fill(chars, count, count, charSet);
         });
     }
 
@@ -189,7 +189,7 @@ public partial class FillTests
         {
             var chars = new char[count];
 
-            RandChar.Fill(chars, 1, count, charSet);
+            RandomCharGenerator.Fill(chars, 1, count, charSet);
         });
     }
 
@@ -203,7 +203,7 @@ public partial class FillTests
     {
         var chars = new char[count];
 
-        RandChar.FillUnique(chars);
+        RandomCharGenerator.FillUnique(chars);
 
         var uniqueChars = new HashSet<char>(chars);
 
@@ -219,7 +219,7 @@ public partial class FillTests
     {
         var chars = new char[count * 2];
 
-        RandChar.FillUnique(chars, count, count);
+        RandomCharGenerator.FillUnique(chars, count, count);
 
         for (var i = 0; i < count; i++)
             Assert.Equal('\0', chars[i]);
@@ -241,7 +241,7 @@ public partial class FillTests
         {
             var chars = new char[count];
 
-            RandChar.FillUnique(chars, -1, count);
+            RandomCharGenerator.FillUnique(chars, -1, count);
         });
     }
 
@@ -257,7 +257,7 @@ public partial class FillTests
         {
             var chars = new char[count];
 
-            RandChar.FillUnique(chars, count, count);
+            RandomCharGenerator.FillUnique(chars, count, count);
         });
     }
 
@@ -272,7 +272,7 @@ public partial class FillTests
         {
             var chars = new char[count];
 
-            RandChar.FillUnique(chars, 1, count);
+            RandomCharGenerator.FillUnique(chars, 1, count);
         });
     }
 
@@ -289,7 +289,7 @@ public partial class FillTests
     {
         var chars = new char[count];
 
-        RandChar.FillUnique(chars, charSet);
+        RandomCharGenerator.FillUnique(chars, charSet);
 
         var uniqueChars = new HashSet<char>(chars);
 
@@ -313,7 +313,7 @@ public partial class FillTests
     {
         var chars = new char[count * 2];
 
-        RandChar.FillUnique(chars, count, count, charSet);
+        RandomCharGenerator.FillUnique(chars, count, count, charSet);
 
         for (var i = 0; i < count; i++)
             Assert.Equal('\0', chars[i]);
@@ -343,7 +343,7 @@ public partial class FillTests
         {
             var chars = new char[count];
 
-            RandChar.FillUnique(chars, -1, count, charSet);
+            RandomCharGenerator.FillUnique(chars, -1, count, charSet);
         });
     }
 
@@ -362,7 +362,7 @@ public partial class FillTests
         {
             var chars = new char[count];
 
-            RandChar.FillUnique(chars, count, count, charSet);
+            RandomCharGenerator.FillUnique(chars, count, count, charSet);
         });
     }
 
@@ -380,7 +380,7 @@ public partial class FillTests
         {
             var chars = new char[count];
 
-            RandChar.FillUnique(chars, 1, count, charSet);
+            RandomCharGenerator.FillUnique(chars, 1, count, charSet);
         });
     }
 }

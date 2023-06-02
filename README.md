@@ -9,8 +9,6 @@ dotnet addpackage RandChar
 
 * [Documentation](https://github.com/stratagyn/RandChar/blob/master/docs/random-char.md)
 
-<br>
-
 ```cs
 using RandChar;
 

@@ -21,7 +21,7 @@ public class GenerateCharactersTests
     [InlineData(100)]
     public void GenerateCharacters_Passes(int count)
     {
-        var chars = new HashSet<char>(RandChar.GenerateCharacters(count));
+        var chars = new HashSet<char>(RandomCharGenerator.GenerateCharacters(count));
 
         Assert.True(chars.Count == count || chars.Count > (count / 2));
     }
@@ -34,7 +34,7 @@ public class GenerateCharactersTests
     [InlineData(100)]
     public void GenerateCharacters_Negative_Passes(int count)
     {
-        var chars = new HashSet<char>(RandChar.GenerateCharacters().Take(count));
+        var chars = new HashSet<char>(RandomCharGenerator.GenerateCharacters().Take(count));
 
         Assert.True(chars.Count == count || chars.Count > (count / 2));
     }
@@ -46,7 +46,7 @@ public class GenerateCharactersTests
     [InlineData(31)]
     public void GenerateCharactersUDCharSet_Passes(int count)
     {
-        var chars = new HashSet<char>(RandChar.GenerateCharacters(AlphaNumeric, count));
+        var chars = new HashSet<char>(RandomCharGenerator.GenerateCharacters(AlphaNumeric, count));
 
         Assert.True(chars.Count == count || chars.Count > (count / 2));
 
@@ -61,7 +61,7 @@ public class GenerateCharactersTests
     [InlineData(31)]
     public void GenerateCharactersUDCharSet_Negative_Passes(int count)
     {
-        var chars = new HashSet<char>(RandChar.GenerateCharacters(AlphaNumeric).Take(count));
+        var chars = new HashSet<char>(RandomCharGenerator.GenerateCharacters(AlphaNumeric).Take(count));
 
         Assert.True(chars.Count == count || chars.Count > (count / 2));
 
@@ -80,7 +80,7 @@ public class GenerateCharactersTests
     [InlineData(CharSet.UppercaseLetter, 100)]
     public void GenerateCharactersCharSet_Passes(CharSet charSet, int count)
     {
-        var chars = new HashSet<char>(RandChar.GenerateCharacters(charSet, count));
+        var chars = new HashSet<char>(RandomCharGenerator.GenerateCharacters(charSet, count));
         var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in chars)
@@ -100,7 +100,7 @@ public class GenerateCharactersTests
     [InlineData(CharSet.UppercaseLetter, 100)]
     public void GenerateCharactersCharSet_Negative_Passes(CharSet charSet, int count)
     {
-        var chars = new HashSet<char>(RandChar.GenerateCharacters(charSet).Take(count));
+        var chars = new HashSet<char>(RandomCharGenerator.GenerateCharacters(charSet).Take(count));
         var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         foreach (var c in chars)
@@ -116,7 +116,7 @@ public class GenerateCharactersTests
     [InlineData(100)]
     public void GenerateUniqueCharacters_Passes(int count)
     {
-        var chars = new HashSet<char>(RandChar.GenerateUniqueCharacters(count));
+        var chars = new HashSet<char>(RandomCharGenerator.GenerateUniqueCharacters(count));
 
         Assert.Equal(count, chars.Count);
     }
@@ -128,7 +128,7 @@ public class GenerateCharactersTests
     [InlineData(100)]
     public void GenerateUniqueCharacters_Negative_Passes(int count)
     {
-        var chars = new HashSet<char>(RandChar.GenerateUniqueCharacters().Take(count));
+        var chars = new HashSet<char>(RandomCharGenerator.GenerateUniqueCharacters().Take(count));
 
         Assert.Equal(count, chars.Count);
     }
@@ -144,7 +144,7 @@ public class GenerateCharactersTests
     [InlineData(CharSet.UppercaseLetter, 100)]
     public void GenerateUniqueCharactersCharSet_Passes(CharSet charSet, int count)
     {
-        var chars = new HashSet<char>(RandChar.GenerateUniqueCharacters(charSet, count));
+        var chars = new HashSet<char>(RandomCharGenerator.GenerateUniqueCharacters(charSet, count));
 
         Assert.Equal(count, chars.Count);
 
@@ -165,7 +165,7 @@ public class GenerateCharactersTests
     [InlineData(CharSet.UppercaseLetter, 100)]
     public void GenerateUniqueCharactersCharSet_Negative_Passes(CharSet charSet, int count)
     {
-        var chars = new HashSet<char>(RandChar.GenerateUniqueCharacters(charSet).Take(count));
+        var chars = new HashSet<char>(RandomCharGenerator.GenerateUniqueCharacters(charSet).Take(count));
 
         Assert.Equal(count, chars.Count);
 
@@ -182,7 +182,7 @@ public class GenerateCharactersTests
     [InlineData(31)]
     public void GenerateUniqueCharactersUDCharSet_Passes(int count)
     {
-        var chars = new HashSet<char>(RandChar.GenerateUniqueCharacters(AlphaNumeric, count));
+        var chars = new HashSet<char>(RandomCharGenerator.GenerateUniqueCharacters(AlphaNumeric, count));
 
         Assert.Equal(count, chars.Count);
 
@@ -197,7 +197,7 @@ public class GenerateCharactersTests
     [InlineData(31)]
     public void GenerateUniqueCharactersUDCharSet_Negative_Passes(int count)
     {
-        var chars = new HashSet<char>(RandChar.GenerateUniqueCharacters(AlphaNumeric).Take(count));
+        var chars = new HashSet<char>(RandomCharGenerator.GenerateUniqueCharacters(AlphaNumeric).Take(count));
 
         Assert.Equal(count, chars.Count);
 

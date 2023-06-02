@@ -36,7 +36,7 @@ public enum CharSet
     ASCIILowercaseLetter = 134217728,
     ASCIIUppercaseLetter = 268435456,
     ASCIIPunctuation = 536870912,
-    ASCIINumber = 1073741824
+    ASCIINumber = 1073741824,
 }
 
 public static partial class Characters

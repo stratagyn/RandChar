@@ -21,7 +21,7 @@ public class GetStringTests
     [InlineData(100)]
     public void GetString_Passes(int length)
     {
-        var @string = RandChar.GetString(length);
+        var @string = RandomCharGenerator.GetString(length);
         var chars = new HashSet<char>(@string);
 
         Assert.True(chars.Count == length || chars.Count > (length / 2));
@@ -32,7 +32,7 @@ public class GetStringTests
     {
         Assert.Throws<ArgumentOutOfRangeException>(() =>
         {
-            var @string = RandChar.GetString(-1);
+            var @string = RandomCharGenerator.GetString(-1);
         });
     }
 
@@ -47,7 +47,7 @@ public class GetStringTests
     [InlineData(CharSet.UppercaseLetter, 100)]
     public void GetStringCharSet_Passes(CharSet charSet, int length)
     {
-        var @string = RandChar.GetString(length, charSet);
+        var @string = RandomCharGenerator.GetString(length, charSet);
         var chars = new HashSet<char>(@string);
 
         Assert.True(chars.Count == length || chars.Count > (length / 2));
@@ -70,7 +70,7 @@ public class GetStringTests
     {
         Assert.Throws<ArgumentOutOfRangeException>(() =>
         {
-            var @string = RandChar.GetString(-1, charSet);
+            var @string = RandomCharGenerator.GetString(-1, charSet);
         });
     }
 
@@ -81,7 +81,7 @@ public class GetStringTests
     [InlineData(31)]
     public void GetStringUDCharSet_Passes(int length)
     {
-        var @string = RandChar.GetString(length, AlphaNumeric);
+        var @string = RandomCharGenerator.GetString(length, AlphaNumeric);
         var chars = new HashSet<char>(@string);
 
         Assert.True(chars.Count == length || chars.Count > (length / 2));
@@ -95,7 +95,7 @@ public class GetStringTests
     {
         Assert.Throws<ArgumentOutOfRangeException>(() =>
         {
-            var @string = RandChar.GetString(-1, AlphaNumeric);
+            var @string = RandomCharGenerator.GetString(-1, AlphaNumeric);
         });
     }
 
@@ -107,7 +107,7 @@ public class GetStringTests
     [InlineData(100)]
     public void GetStringUnique_Passes(int length)
     {
-        var @string = RandChar.GetUniqueString(length);
+        var @string = RandomCharGenerator.GetUniqueString(length);
         var chars = new HashSet<char>(@string);
 
         Assert.Equal(length, chars.Count);
@@ -118,7 +118,7 @@ public class GetStringTests
     {
         Assert.Throws<ArgumentOutOfRangeException>(() =>
         {
-            var @string = RandChar.GetUniqueString(-1);
+            var @string = RandomCharGenerator.GetUniqueString(-1);
         });
     }
 
@@ -133,7 +133,7 @@ public class GetStringTests
     [InlineData(CharSet.UppercaseLetter, 100)]
     public void GetUniqueStringCharSet_Passes(CharSet charSet, int length)
     {
-        var @string = RandChar.GetUniqueString(length, charSet);
+        var @string = RandomCharGenerator.GetUniqueString(length, charSet);
         var chars = new HashSet<char>(@string);
 
         Assert.Equal(length, chars.Count);
@@ -156,7 +156,7 @@ public class GetStringTests
     {
         Assert.Throws<ArgumentOutOfRangeException>(() =>
         {
-            var @string = RandChar.GetUniqueString(-1, charSet);
+            var @string = RandomCharGenerator.GetUniqueString(-1, charSet);
         });
     }
 
@@ -167,7 +167,7 @@ public class GetStringTests
     [InlineData(31)]
     public void GetUniqueStringUDCharSet_Passes(int length)
     {
-        var @string = RandChar.GetUniqueString(length, AlphaNumeric);
+        var @string = RandomCharGenerator.GetUniqueString(length, AlphaNumeric);
         var chars = new HashSet<char>(@string);
 
         Assert.Equal(length, chars.Count);
@@ -181,7 +181,7 @@ public class GetStringTests
     {
         Assert.Throws<ArgumentOutOfRangeException>(() =>
         {
-            var @string = RandChar.GetUniqueString(-1, AlphaNumeric);
+            var @string = RandomCharGenerator.GetUniqueString(-1, AlphaNumeric);
         });
     }
 }

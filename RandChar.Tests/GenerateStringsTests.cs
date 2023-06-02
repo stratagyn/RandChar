@@ -21,7 +21,7 @@ public class GenerateStringsTests
     [InlineData(10, 100)]
     public void GenerateStrings_Passes(int length, int count)
     {
-        var strings = new HashSet<string>(RandChar.GenerateStrings(length, count));
+        var strings = new HashSet<string>(RandomCharGenerator.GenerateStrings(length, count));
 
         Assert.True(strings.Count == count || strings.Count > (count / 2));
     }
@@ -34,7 +34,7 @@ public class GenerateStringsTests
     [InlineData(10, 100)]
     public void GenerateStrings_Negative_Passes(int length, int count)
     {
-        var strings = new HashSet<string>(RandChar.GenerateStrings(length).Take(count));
+        var strings = new HashSet<string>(RandomCharGenerator.GenerateStrings(length).Take(count));
 
         Assert.True(strings.Count == count || strings.Count > (count / 2));
     }
@@ -50,7 +50,7 @@ public class GenerateStringsTests
     [InlineData(10, CharSet.UppercaseLetter, 25)]
     public void GenerateStringsCharSet_Passes(int length, CharSet charSet, int count)
     {
-        var strings = new HashSet<string>(RandChar.GenerateStrings(length, charSet, count));
+        var strings = new HashSet<string>(RandomCharGenerator.GenerateStrings(length, charSet, count));
         var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         Assert.True(strings.Count == count || strings.Count > (count / 2));
@@ -71,7 +71,7 @@ public class GenerateStringsTests
     [InlineData(10, CharSet.UppercaseLetter, 25)]
     public void GenerateStringsCharSet_Negative_Passes(int length, CharSet charSet, int count)
     {
-        var strings = new HashSet<string>(RandChar.GenerateStrings(length, charSet).Take(count));
+        var strings = new HashSet<string>(RandomCharGenerator.GenerateStrings(length, charSet).Take(count));
         var uids = new HashSet<char>(Characters.GetCharacterSet(charSet));
 
         Assert.True(strings.Count == count || strings.Count > (count / 2));
@@ -87,7 +87,7 @@ public class GenerateStringsTests
     [InlineData(10, 31)]
     public void GenerateStringsUDCharSet_Passes(int length, int count)
     {
-        var strings = new HashSet<string>(RandChar.GenerateStrings(length, AlphaNumeric, count));
+        var strings = new HashSet<string>(RandomCharGenerator.GenerateStrings(length, AlphaNumeric, count));
 
         Assert.True(strings.Count == count || strings.Count > (count / 2));
 
@@ -102,7 +102,7 @@ public class GenerateStringsTests
     [InlineData(10, 31)]
     public void GenerateStringsUDCharSet_Negative_Passes(int length, int count)
     {
-        var strings = new HashSet<string>(RandChar.GenerateStrings(length, AlphaNumeric).Take(count));
+        var strings = new HashSet<string>(RandomCharGenerator.GenerateStrings(length, AlphaNumeric).Take(count));
 
         Assert.True(strings.Count == count || strings.Count > (count / 2));
 
@@ -119,7 +119,7 @@ public class GenerateStringsTests
     [InlineData(10, 100)]
     public void GenerateUniqueStrings_Passes(int length, int count)
     {
-        var strings = new HashSet<string>(RandChar.GenerateUniqueStrings(length, count));
+        var strings = new HashSet<string>(RandomCharGenerator.GenerateUniqueStrings(length, count));
 
         Assert.Equal(count, strings.Count);
     }
@@ -132,7 +132,7 @@ public class GenerateStringsTests
     [InlineData(10, 100)]
     public void GenerateUniqueStrings_Negative_Passes(int length, int count)
     {
-        var chars = new HashSet<string>(RandChar.GenerateUniqueStrings(length).Take(count));
+        var chars = new HashSet<string>(RandomCharGenerator.GenerateUniqueStrings(length).Take(count));
 
         Assert.Equal(count, chars.Count);
     }
@@ -148,7 +148,7 @@ public class GenerateStringsTests
     [InlineData(10, CharSet.UppercaseLetter, 25)]
     public void GenerateUniqueStringsCharSet_Passes(int length, CharSet charSet, int count)
     {
-        var chars = new HashSet<string>(RandChar.GenerateUniqueStrings(length, charSet, count));
+        var chars = new HashSet<string>(RandomCharGenerator.GenerateUniqueStrings(length, charSet, count));
 
         Assert.Equal(count, chars.Count);
 
@@ -170,7 +170,7 @@ public class GenerateStringsTests
     [InlineData(10, CharSet.UppercaseLetter, 25)]
     public void GenerateUniqueStringsCharSet_Negative_Passes(int length, CharSet charSet, int count)
     {
-        var chars = new HashSet<string>(RandChar.GenerateUniqueStrings(length, charSet).Take(count));
+        var chars = new HashSet<string>(RandomCharGenerator.GenerateUniqueStrings(length, charSet).Take(count));
 
         Assert.Equal(count, chars.Count);
 
@@ -192,7 +192,7 @@ public class GenerateStringsTests
     [InlineData(10, CharSet.UppercaseLetter, 25)]
     public void GenerateUniqueStringsUDCharSet_Passes(int length, CharSet charSet, int count)
     {
-        var chars = new HashSet<string>(RandChar.GenerateUniqueStrings(length, charSet, count));
+        var chars = new HashSet<string>(RandomCharGenerator.GenerateUniqueStrings(length, charSet, count));
 
         Assert.Equal(count, chars.Count);
 
@@ -209,7 +209,7 @@ public class GenerateStringsTests
     [InlineData(10, 31)]
     public void GenerateUniqueStringsUDCharSet_Negative_Passes(int length, int count)
     {
-        var chars = new HashSet<string>(RandChar.GenerateUniqueStrings(length, AlphaNumeric).Take(count));
+        var chars = new HashSet<string>(RandomCharGenerator.GenerateUniqueStrings(length, AlphaNumeric).Take(count));
 
         Assert.Equal(count, chars.Count);
 

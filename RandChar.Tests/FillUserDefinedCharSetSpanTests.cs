@@ -12,7 +12,7 @@ public partial class FillTests
         var chars = new char[count];
         var span = new Span<char>(chars);
 
-        RandChar.Fill(span, AlphaNumeric);
+        RandomCharGenerator.Fill(span, AlphaNumeric);
 
         var uniqueChars = new HashSet<char>();
 
@@ -34,7 +34,7 @@ public partial class FillTests
         var chars = new char[count * 2];
         var span = new Span<char>(chars);
 
-        RandChar.Fill(span, count, count, AlphaNumeric);
+        RandomCharGenerator.Fill(span, count, count, AlphaNumeric);
 
         for (var i = 0; i < count; i++)
             Assert.Equal('\0', span[i]);
@@ -62,7 +62,7 @@ public partial class FillTests
             var chars = new char[count];
             var span = new Span<char>(chars);
 
-            RandChar.Fill(span, -1, count, AlphaNumeric);
+            RandomCharGenerator.Fill(span, -1, count, AlphaNumeric);
         });
     }
 
@@ -78,7 +78,7 @@ public partial class FillTests
             var chars = new char[count];
             var span = new Span<char>(chars);
 
-            RandChar.Fill(span, count, count, AlphaNumeric);
+            RandomCharGenerator.Fill(span, count, count, AlphaNumeric);
         });
     }
 
@@ -93,7 +93,7 @@ public partial class FillTests
             var chars = new char[count];
             var span = new Span<char>(chars);
 
-            RandChar.Fill(span, 1, count, AlphaNumeric);
+            RandomCharGenerator.Fill(span, 1, count, AlphaNumeric);
         });
     }
 
@@ -107,7 +107,7 @@ public partial class FillTests
         var chars = new char[count];
         var span = new Span<char>(chars);
 
-        RandChar.FillUnique(span, AlphaNumeric);
+        RandomCharGenerator.FillUnique(span, AlphaNumeric);
 
         var uniqueChars = new HashSet<char>(chars);
 
@@ -126,7 +126,7 @@ public partial class FillTests
         var chars = new char[count * 2];
         var span = new Span<char>(chars);
 
-        RandChar.FillUnique(span, count, count, AlphaNumeric);
+        RandomCharGenerator.FillUnique(span, count, count, AlphaNumeric);
 
         for (var i = 0; i < count; i++)
             Assert.Equal('\0', span[i]);
@@ -153,7 +153,7 @@ public partial class FillTests
             var chars = new char[count];
             var span = new Span<char>(chars);
 
-            RandChar.FillUnique(span, -1, count, AlphaNumeric);
+            RandomCharGenerator.FillUnique(span, -1, count, AlphaNumeric);
         });
     }
 
@@ -169,7 +169,7 @@ public partial class FillTests
             var chars = new char[count];
             var span = new Span<char>(chars);
 
-            RandChar.FillUnique(span, count, count, AlphaNumeric);
+            RandomCharGenerator.FillUnique(span, count, count, AlphaNumeric);
         });
     }
 
@@ -184,7 +184,7 @@ public partial class FillTests
             var chars = new char[count];
             var span = new Span<char>(chars);
 
-            RandChar.FillUnique(span, 1, count, AlphaNumeric);
+            RandomCharGenerator.FillUnique(span, 1, count, AlphaNumeric);
         });
     }
 }
