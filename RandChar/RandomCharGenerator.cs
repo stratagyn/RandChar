@@ -645,6 +645,7 @@ public static class RandomCharGenerator
             chars.Clear();
         }
     }
+    
     #endregion GenerateUniqueStrings
 
     #region GetCharacter

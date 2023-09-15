@@ -4,7 +4,7 @@
 * Installed using NuGet
 
 ```
-dotnet addpackage RandChar
+dotnet add package RandChar
 ```
 
 * [Documentation](https://github.com/stratagyn/RandChar/blob/master/docs/random-char.md)
@@ -22,7 +22,7 @@ var passwordCharacters =
 //Generates a password with 10 distinct password characters
 var password = RandomCharGenerator.GetUniqueString(10, passwordCharacters);
 
-//Generates 10 distinct passwords with 10 distinct password characters
+//Generates 10 passwords, each with 10 distinct password characters
 var passwords = RandomCharGenerator.GenerateUniqueStrings(10, passwordCharacters, 10)
 ```
 

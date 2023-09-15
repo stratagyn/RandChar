@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <Title>RandChar</Title>
     <Authors>stratagyn</Authors>
-    <Description>Methods for generating random text.</Description>
+    <Description>Random character and string generator</Description>
     <Copyright>stratagyn 2023</Copyright>
     <PackageProjectUrl>https://github.com/stratagyn/RandChar</PackageProjectUrl>
     <PackageIcon>Stratagyn Logo.png</PackageIcon>
@@ -16,10 +16,11 @@
     <PackageTags>random, string, text, character, char</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\..\OneDrive\Pictures\Stratagyn Logo.png">
+    <None Include="..\..\..\..\..\OneDrive\Pictures\Stratagyn Logo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
@@ -27,11 +28,6 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>
